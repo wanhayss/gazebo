@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<!--
+  START/END Gate model (Gazebo Harmonic / SDF 1.9)
+
+  Dimensions:
+    - Total height from ground     : 2.375 m
+    - Opening                      : 1.5 m x 1.5 m
+    - Ground to bottom of opening  : 0.675 m
+    - Frame border                 : 0.2 m  (outer frame 1.9 m x 1.9 m)
+    - Frame depth (assumed)        : 0.05 m
+
+  The gate plane is the Y-Z plane (it faces along the X axis).
+-->
+<sdf version="1.9">
+  <model name="gate_green">
+    <static>true</static>
+
+    <!-- Green frame -->
+    <link name="frame">
+
+      <!-- Bottom bar: z 0.475 to 0.675 -->
+      <visual name="bottom_bar">
+        <pose>0 0 0.575 0 0 0</pose>
+        <geometry><box><size>0.05 1.9 0.2</size></box></geometry>
+        <material>
+          <ambient>0.1 0.6 0.1 1</ambient>
+          <diffuse>0.1 0.7 0.1 1</diffuse>
+        </material>
+      </visual>
+      <collision name="bottom_bar_col">
+        <pose>0 0 0.575 0 0 0</pose>
+        <geometry><box><size>0.05 1.9 0.2</size></box></geometry>
+      </collision>
+
+      <!-- Top bar: z 2.175 to 2.375 -->
+      <visual name="top_bar">
+        <pose>0 0 2.275 0 0 0</pose>
+        <geometry><box><size>0.05 1.9 0.2</size></box></geometry>
+        <material>
+          <ambient>0.1 0.6 0.1 1</ambient>
+          <diffuse>0.1 0.7 0.1 1</diffuse>
+        </material>
+      </visual>
+      <collision name="top_bar_col">
+        <pose>0 0 2.275 0 0 0</pose>
+        <geometry><box><size>0.05 1.9 0.2</size></box></geometry>
+      </collision>
+
+      <!-- Left bar: y 0.75 to 0.95, z 0.675 to 2.175 -->
+      <visual name="left_bar">
+        <pose>0 0.85 1.425 0 0 0</pose>
+        <geometry><box><size>0.05 0.2 1.5</size></box></geometry>
+        <material>
+          <ambient>0.1 0.6 0.1 1</ambient>
+          <diffuse>0.1 0.7 0.1 1</diffuse>
+        </material>
+      </visual>
+      <collision name="left_bar_col">
+        <pose>0 0.85 1.425 0 0 0</pose>
+        <geometry><box><size>0.05 0.2 1.5</size></box></geometry>
+      </collision>
+
+      <!-- Right bar: y -0.95 to -0.75, z 0.675 to 2.175 -->
+      <visual name="right_bar">
+        <pose>0 -0.85 1.425 0 0 0</pose>
+        <geometry><box><size>0.05 0.2 1.5</size></box></geometry>
+        <material>
+          <ambient>0.1 0.6 0.1 1</ambient>
+          <diffuse>0.1 0.7 0.1 1</diffuse>
+        </material>
+      </visual>
+      <collision name="right_bar_col">
+        <pose>0 -0.85 1.425 0 0 0</pose>
+        <geometry><box><size>0.05 0.2 1.5</size></box></geometry>
+      </collision>
+    </link>
+
+    <!-- Wooden posts and triangular feet -->
+    <link name="stand">
+
+      <!-- Posts: ground up to the bottom of the frame (0.475 m) -->
+      <visual name="post_left">
+        <pose>0 0.85 0.2375 0 0 0</pose>
+        <geometry><box><size>0.05 0.1 0.475</size></box></geometry>
+        <material>
+          <ambient>0.75 0.55 0.3 1</ambient>
+          <diffuse>0.8 0.6 0.35 1</diffuse>
+        </material>
+      </visual>
+      <collision name="post_left_col">
+        <pose>0 0.85 0.2375 0 0 0</pose>
+        <geometry><box><size>0.05 0.1 0.475</size></box></geometry>
+      </collision>
+
+      <visual name="post_right">
+        <pose>0 -0.85 0.2375 0 0 0</pose>
+        <geometry><box><size>0.05 0.1 0.475</size></box></geometry>
+        <material>
+          <ambient>0.75 0.55 0.3 1</ambient>
+          <diffuse>0.8 0.6 0.35 1</diffuse>
+        </material>
+      </visual>
+      <collision name="post_right_col">
+        <pose>0 -0.85 0.2375 0 0 0</pose>
+        <geometry><box><size>0.05 0.1 0.475</size></box></geometry>
+      </collision>
+
+      <!--
+        Triangular feet: polyline extruded and rolled 90 deg so the triangle
+        lies in the X-Z plane. Extrusion runs toward -Y, so pose Y = post Y + 0.05.
+        Triangle: 0.5 m base on the ground, 0.4 m tall against the post.
+      -->
+      <visual name="foot_left">
+        <pose>0 0.9 0 1.5708 0 0</pose>
+        <geometry>
+          <polyline>
+            <point>0.025 0</point>
+            <point>0.5 0</point>
+            <point>0.025 0.4</point>
+            <height>0.1</height>
+          </polyline>
+        </geometry>
+        <material>
+          <ambient>0.75 0.55 0.3 1</ambient>
+          <diffuse>0.8 0.6 0.35 1</diffuse>
+        </material>
+      </visual>
+      <collision name="foot_left_col">
+        <pose>0 0.9 0 1.5708 0 0</pose>
+        <geometry>
+          <polyline>
+            <point>0.025 0</point>
+            <point>0.5 0</point>
+            <point>0.025 0.4</point>
+            <height>0.1</height>
+          </polyline>
+        </geometry>
+      </collision>
+
+      <visual name="foot_right">
+        <pose>0 -0.8 0 1.5708 0 0</pose>
+        <geometry>
+          <polyline>
+            <point>0.025 0</point>
+            <point>0.5 0</point>
+            <point>0.025 0.4</point>
+            <height>0.1</height>
+          </polyline>
+        </geometry>
+        <material>
+          <ambient>0.75 0.55 0.3 1</ambient>
+          <diffuse>0.8 0.6 0.35 1</diffuse>
+        </material>
+      </visual>
+      <collision name="foot_right_col">
+        <pose>0 -0.8 0 1.5708 0 0</pose>
+        <geometry>
+          <polyline>
+            <point>0.025 0</point>
+            <point>0.5 0</point>
+            <point>0.025 0.4</point>
+            <height>0.1</height>
+          </polyline>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- Rigidly attach the frame to the stand -->
+    <joint name="frame_to_stand" type="fixed">
+      <parent>stand</parent>
+      <child>frame</child>
+    </joint>
+  </model>
+</sdf>
