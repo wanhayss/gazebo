@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+  pillar: cylinder, 2.5 m tall, radius 0.15 m (diameter 0.3 m, assumed).
+  The model origin is at ground level, at the centre of the pillar.
+-->
+<sdf version="1.9">
+  <model name="pillar">
+    <static>true</static>
+    <link name="link">
+      <visual name="visual">
+        <pose>0 0 1.25 0 0 0</pose>
+        <geometry><cylinder><radius>0.15</radius><length>2.5</length></cylinder></geometry>
+        <material>
+          <ambient>0.45 0.45 0.45 1</ambient>
+          <diffuse>0.5 0.5 0.5 1</diffuse>
+        </material>
+      </visual>
+      <collision name="collision">
+        <pose>0 0 1.25 0 0 0</pose>
+        <geometry><cylinder><radius>0.15</radius><length>2.5</length></cylinder></geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>
