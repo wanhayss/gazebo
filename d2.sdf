@@ -1,0 +1,189 @@
+<sdf version='1.10'>
+  <world name='iris_runway'>
+    <physics name='1ms' type='ignore'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <plugin name='gz::sim::systems::Physics' filename='gz-sim-physics-system'/>
+    <plugin name='gz::sim::systems::Sensors' filename='gz-sim-sensors-system'>
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin name='gz::sim::systems::UserCommands' filename='gz-sim-user-commands-system'/>
+    <plugin name='gz::sim::systems::SceneBroadcaster' filename='gz-sim-scene-broadcaster-system'/>
+    <plugin name='gz::sim::systems::Imu' filename='gz-sim-imu-system'/>
+    <plugin name='gz::sim::systems::NavSat' filename='gz-sim-navsat-system'/>
+    <scene>
+      <ambient>1 1 1 1</ambient>
+      <background>0.800000012 0.800000012 0.800000012 1</background>
+      <sky/>
+      <shadows>true</shadows>
+    </scene>
+    <spherical_coordinates>
+      <latitude_deg>-35.363261999999999</latitude_deg>
+      <longitude_deg>149.16523699999999</longitude_deg>
+      <elevation>584</elevation>
+      <heading_deg>0</heading_deg>
+      <surface_model>EARTH_WGS84</surface_model>
+    </spherical_coordinates>
+    <gravity>0 0 -9.8000000000000007</gravity>
+    <magnetic_field>5.5644999999999998e-06 2.2875799999999999e-05 -4.2388400000000002e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <model name='axes'>
+      <static>true</static>
+      <link name='link'>
+        <visual name='r'>
+          <cast_shadows>false</cast_shadows>
+          <pose>5 0 0.10000000000000001 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>10 0.01 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 0.800000012</ambient>
+            <diffuse>1 0 0 0.800000012</diffuse>
+            <emissive>1 0 0 0.800000012</emissive>
+            <specular>0.5 0.5 0.5 0.800000012</specular>
+          </material>
+        </visual>
+        <visual name='g'>
+          <cast_shadows>false</cast_shadows>
+          <pose>0 5 0.10000000000000001 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.01 10 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 1 0 0.800000012</ambient>
+            <diffuse>0 1 0 0.800000012</diffuse>
+            <emissive>0 1 0 0.800000012</emissive>
+            <specular>0.5 0.5 0.5 0.800000012</specular>
+          </material>
+        </visual>
+        <visual name='b'>
+          <cast_shadows>false</cast_shadows>
+          <pose>0 0 5.0999999999999996 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 10</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 1 0.800000012</ambient>
+            <diffuse>0 0 1 0.800000012</diffuse>
+            <emissive>0 0 1 0.800000012</emissive>
+            <specular>0.5 0.5 0.5 0.800000012</specular>
+          </material>
+        </visual>
+        <sensor name='navsat_sensor' type='navsat'>
+          <always_on>true</always_on>
+          <update_rate>1</update_rate>
+          <gps/>
+        </sensor>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0 0 0 0 0 0</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <include>
+      <uri>file:///home/irwan/ardupilot_gazebo/models/runway</uri>
+      <name>runway</name>
+      <pose>-29 545 0 0 0 0.052359877559829952</pose>
+    </include>
+    <include>
+      <uri>file:///home/irwan/ardupilot_gazebo/models/iris_with_gimbal</uri>
+      <name>iris_with_gimbal</name>
+      <pose>-2.9066228349959164e-16 3.0781382998057438e-10 0.19499999708439955 -1.9626155748177624e-15 1.5785697803913229e-09 1.5707963267948946</pose>
+    </include>
+    <include>
+      <uri>file:///home/irwan/ardupilot_gazebo/models/gate_green</uri>
+      <name>gate_green_1</name>
+      <pose>2.5 0 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>file:///home/irwan/ardupilot_gazebo/models/gate_green</uri>
+      <name>gate_green_2</name>
+      <pose>0 2.5 0 0 0 1.5707963267948963</pose>
+    </include>
+    <include>
+      <uri>file:///home/irwan/ardupilot_gazebo/models/gate_blue</uri>
+      <name>gate_blue_1</name>
+      <pose>2.5 14.5 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>file:///home/irwan/ardupilot_gazebo/models/gate_blue</uri>
+      <name>gate_blue_2</name>
+      <pose>5 8.5 0 0 0 1.5707963267948963</pose>
+    </include>
+    <include>
+      <uri>file:///home/irwan/ardupilot_gazebo/models/gate_blue</uri>
+      <name>gate_blue_3</name>
+      <pose>14.5 8.5 0 0 0 1.5707963267948963</pose>
+    </include>
+    <include>
+      <uri>file:///home/irwan/ardupilot_gazebo/models/gate_yellow</uri>
+      <name>gate_yellow_1</name>
+      <pose>9.5 4.5 0 0 0 1.5707963267948963</pose>
+    </include>
+    <include>
+      <uri>file:///home/irwan/ardupilot_gazebo/models/gate_yellow</uri>
+      <name>gate_yellow_2</name>
+      <pose>9.5 5.5 0 0 0 1.5707963267948963</pose>
+    </include>
+    <include>
+      <uri>file:///home/irwan/ardupilot_gazebo/models/gate_yellow</uri>
+      <name>gate_yellow_3</name>
+      <pose>9.5 6.5 0 0 0 1.5707963267948963</pose>
+    </include>
+    <include>
+      <uri>file:///home/irwan/ardupilot_gazebo/models/wall_9m</uri>
+      <name>wall_9m_1</name>
+      <pose>2.5 8 0 0 0 1.5707963267948963</pose>
+    </include>
+    <include>
+      <uri>file:///home/irwan/ardupilot_gazebo/models/wall_9m</uri>
+      <name>wall_9m_2</name>
+      <pose>7.5 9 0 0 0 1.5707963267948963</pose>
+    </include>
+    <include>
+      <uri>file:///home/irwan/ardupilot_gazebo/models/wall_12m</uri>
+      <name>wall_12m_1</name>
+      <pose>12.5 7.5 0 0 0 1.5707963267948963</pose>
+    </include>
+    
+    <light name='sun' type='directional'>
+      <pose>0 0 10 0 0 0</pose>
+      <cast_shadows>true</cast_shadows>
+      <intensity>1</intensity>
+      <direction>-0.5 0.10000000000000001 -0.90000000000000002</direction>
+      <diffuse>0.800000012 0.800000012 0.800000012 1</diffuse>
+      <specular>0.800000012 0.800000012 0.800000012 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <linear>0.01</linear>
+        <constant>0.90000000000000002</constant>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+  </world>
+</sdf>
